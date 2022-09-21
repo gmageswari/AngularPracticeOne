@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="practiceOne.css" />
+    <script src="https://code.angularjs.org/snapshot/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="practiceOneApp">
+        <div ng-controller="practiceOneController" class="container">
+            <div class="headingContainer">
+                Practice Assignment - 1
+            </div>
+            <div class="addContainer">
+                <input type="text" placeholder="Name" ng-model="newName"/>
+                <input type="text" placeholder="Course" ng-model="newCourse"/>
+                <button class="addButtonStyle" ng-click="add(newName,newCourse)">Add</button>
+                
+            </div>
+            
+            <div ng-repeat="eachStudent in students" class="eachStudentContainer">
+                <p ng-show="!eachStudent.show">{{eachStudent.name}}</p>
+                <input type="text" class="editInputStyle" ng-model="eachStudent.name" ng-show="eachStudent.show"/>
+                <p ng-show="!eachStudent.show">{{eachStudent.course}}</p>
+                <input type="text" class="editInputStyle" ng-model="eachStudent.course" ng-show="eachStudent.show"/>
+                <button class="addButtonStyle" ng-click="edit(eachStudent.$$hashKey)" ng-show="!eachStudent.show">Edit</button>
+                <button class="addButtonStyle" ng-click="delete(eachStudent.$$hashKey)" ng-show="!eachStudent.show">Delete</button>
+                <button class="addButtonStyle" ng-click="ok(eachStudent.$$hashKey)" ng-show="eachStudent.show">Ok</button>
+            </div>
+            
+
+
+            
+            
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="main.controller.js"></script>
+</body>
+</html>
